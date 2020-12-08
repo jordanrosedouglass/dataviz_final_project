@@ -1,7 +1,7 @@
 ---
 title: "Visualizing Text and Distributions"
 output: 
-  html_document:
+  html_document: 
     keep_md: true
     toc: true
     toc_float: true
@@ -127,9 +127,9 @@ d <-ggplot(tpa_clean,
   aes(x = `max_temp`,
       y = month,
       fill = stat(x))) +
-  geom_density_ridges_gradient(scale = 1.5, size = 0.6, rel_min_height = 0.01, quantile_lines = TRUE,
+  geom_density_ridges_gradient(scale = 2.0, size = 0.6, rel_min_height = 0.01, quantile_lines = TRUE,
                                quantiles = 0.5) +
-  scale_fill_viridis_c(option = "D") +
+  scale_fill_viridis_c() +
   labs(x = "Maximum temperature",
        y = "")
 d + theme(legend.position = "none")
@@ -223,7 +223,7 @@ head(10)
 ```
 
 ```{r textviz}
-ten_top %>%
+wordviz <- ten_top %>%
   group_by(word) %>%
   summarise(uses=n()) %>%
   arrange(desc(uses)) %>%
@@ -233,10 +233,11 @@ ten_top %>%
            stat = "identity") +
   coord_flip() +
   theme_minimal()
+wordviz
 ```
 
 ```{r textsent}
-ten_top %>%
+sent_a <- ten_top %>%
   inner_join(get_sentiments("bing")) %>%
   count(Song, sentiment) %>%
   spread(sentiment, n, fill = 0) %>%
@@ -249,4 +250,5 @@ ten_top %>%
   labs(x = "", 
        title = "Top 15 Songs of 2015 Sentiment Analysis") + 
   theme_minimal()
+sent_a
 ```

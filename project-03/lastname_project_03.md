@@ -1,7 +1,7 @@
 ---
 title: "Visualizing Text and Distributions"
 output: 
-  html_document:
+  html_document: 
     keep_md: true
     toc: true
     toc_float: true
@@ -29,10 +29,10 @@ sample_n(weather_tpa, 4)
 ## # A tibble: 4 x 6
 ##    year month   day precipitation max_temp min_temp
 ##   <dbl> <dbl> <dbl>         <dbl>    <dbl>    <dbl>
-## 1  2016     7    24          1.31       90       73
-## 2  2016     3    10          0          85       68
-## 3  2016     4    19          0          84       62
-## 4  2016     7     1          0          92       79
+## 1  2016    10     6          0.25       87       75
+## 2  2016     8    23          0.52       95       79
+## 3  2016     1    17          1.01       68       50
+## 4  2016    12     9          0.04       63       51
 ```
 
 
@@ -164,9 +164,9 @@ d <-ggplot(tpa_clean,
   aes(x = `max_temp`,
       y = month,
       fill = stat(x))) +
-  geom_density_ridges_gradient(scale = 1.5, size = 0.6, rel_min_height = 0.01, quantile_lines = TRUE,
+  geom_density_ridges_gradient(scale = 2.0, size = 0.6, rel_min_height = 0.01, quantile_lines = TRUE,
                                quantiles = 0.5) +
-  scale_fill_viridis_c(option = "D") +
+  scale_fill_viridis_c() +
   labs(x = "Maximum temperature",
        y = "")
 d + theme(legend.position = "none")
@@ -339,7 +339,7 @@ head(10)
 
 
 ```r
-ten_top %>%
+wordviz <- ten_top %>%
   group_by(word) %>%
   summarise(uses=n()) %>%
   arrange(desc(uses)) %>%
@@ -355,11 +355,15 @@ ten_top %>%
 ## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
+```r
+wordviz
+```
+
 ![](lastname_project_03_files/figure-html/textviz-1.png)<!-- -->
 
 
 ```r
-ten_top %>%
+sent_a <- ten_top %>%
   inner_join(get_sentiments("bing")) %>%
   count(Song, sentiment) %>%
   spread(sentiment, n, fill = 0) %>%
@@ -376,6 +380,10 @@ ten_top %>%
 
 ```
 ## Joining, by = "word"
+```
+
+```r
+sent_a
 ```
 
 ![](lastname_project_03_files/figure-html/textsent-1.png)<!-- -->
