@@ -29,10 +29,10 @@ sample_n(weather_tpa, 4)
 ## # A tibble: 4 x 6
 ##    year month   day precipitation max_temp min_temp
 ##   <dbl> <dbl> <dbl>         <dbl>    <dbl>    <dbl>
-## 1  2016     5    26             0       89       71
-## 2  2016     2    10             0       58       46
-## 3  2016     9    10             0       95       79
-## 4  2016     4     5             0       83       59
+## 1  2016     5     7             0       80       60
+## 2  2016     5    19             0       89       76
+## 3  2016     1     2             0       73       59
+## 4  2016     4     3             0       78       59
 ```
 
 
@@ -94,7 +94,7 @@ Hint: the option `binwidth = 3` was used with the `geom_histogram()` function.
 
 ```r
 a <- ggplot(tpa_clean, aes(x = max_temp, fill = month)) +
-  geom_histogram(binwidth = 3) +
+  geom_histogram(binwidth = 3, color = "white") +
   theme_bw() +
   theme(legend.position="none",
       panel.spacing = unit(0.1, "lines"),
@@ -136,7 +136,7 @@ Hint: default options for `geom_density()` were used.
 
 ```r
 c <-ggplot(tpa_clean, aes(x=max_temp, fill=month)) +
-    geom_density() +
+    geom_density(alpha=0.75) +
   theme_bw() +
     facet_wrap(~month) +
   scale_fill_viridis_d() +
@@ -163,13 +163,15 @@ Hint: default options for `geom_density()` were used.
 d <-ggplot(tpa_clean,
   aes(x = `max_temp`,
       y = month,
-      fill = stat(x))) +
+      fill = month)) +
   geom_density_ridges_gradient(scale = 2.0, size = 0.6, rel_min_height = 0.01, quantile_lines = TRUE,
                                quantiles = 0.5) +
-  scale_fill_viridis_c() +
+  scale_fill_viridis_d() +
   labs(x = "Maximum temperature",
-       y = "")
-d + theme(legend.position = "none")
+       y = "") +
+    theme(legend.position = "none") +
+  guides(fill= FALSE)
+d + theme_minimal()
 ```
 
 ```
@@ -177,6 +179,7 @@ d + theme(legend.position = "none")
 ```
 
 ![](douglass_project_03_files/figure-html/mimic density ridge-1.png)<!-- -->
+
 
 (e) Recreate the plot below:
 
@@ -189,13 +192,14 @@ Hint: use the`ggridges` package, and the `geom_density_ridges()` function paying
 e <- ggplot(tpa_clean,
   aes(x = `max_temp`,
       y = month,
-      fill = stat(x))) +
+      fill = month)) +
   geom_density_ridges_gradient(scale = 1.75, size = 0.6, rel_min_height = 0.01, quantile_lines = TRUE,
                                quantiles = 0.5) +
-  scale_fill_viridis_c() +
+  scale_fill_viridis_d() +
   labs(x = "Maximum temperature",
-       y = "")
-e + theme(legend.position = "none")
+       y = "") +
+  guides(fill=FALSE)
+e + theme_minimal()
 ```
 
 ```
@@ -210,6 +214,7 @@ e + theme(legend.position = "none")
 
 Hint: this uses the `plasma` option (color scale) for the _viridis_ palette.
 
+
 ```r
 f <-ggplot(tpa_clean,
   aes(x = `max_temp`,
@@ -218,8 +223,9 @@ f <-ggplot(tpa_clean,
   geom_density_ridges_gradient(scale = 1.75, size = 0.6, rel_min_height = 0.01, quantile_lines = TRUE, quantiles = 0.5) +
   scale_fill_viridis_c(option = "C") +
   labs(x = "Maximum temperature (in Fahrenheit degrees)",
-       y = "") 
-f + theme(legend.position = "none")
+       y = "",
+       fill = "")
+f + theme_minimal()
 ```
 
 ```
