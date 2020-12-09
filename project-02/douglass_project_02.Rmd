@@ -7,6 +7,150 @@ output:
     toc_float: true
 ---
 
-# Data Visualization Project 02
+## Mini Project 2 Background
 
-_revised version of mini-project 02 goes here_
+The second Mini Project focused on real data collected via wearable devices from a fellow FPU Graduate student. While the project he is focusing on uses machine learning techniques to predict risk of hypertension in young adults - I sought to provide meaningful visualizations from the data collected via the wearable devices or participants themselves.
+
+
+```{r setup, include=FALSE}
+
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+library(lubridate)
+library(scales)
+library(viridis)
+library(ggthemes)
+library(sf)
+
+surv_join_zip <- read.csv("https://raw.githubusercontent.com/jordanrosedouglass/hypertension_research/master/survey_data_w_zip.csv")
+
+master_collection <- read.csv("https://raw.githubusercontent.com/jordanrosedouglass/hypertension_research/master/JuneJulyAugMaster2020.csv")
+
+mergesurvey <- merge(master_collection, surv_join_zip, by=c('MRN'), all.x=T)
+
+# ZIPCODE needs to be read as character here
+surv_join_zip$ZIPCODE <- as.character(surv_join_zip$ZIPCODE)
+
+#read the shapefile into .rmd
+fl_shapes <- read_sf("/Users/jordandouglass/Downloads/dataviz_mini-project_02/data/kx-florida-zip-code-areas-SHP/florida-zip-code-areas.shp")
+
+#count the frequency of ZIPCODES appearing in the survey data
+mydf <- count(surv_join_zip,ZIPCODE)
+
+participant_map <- fl_shapes %>%
+  left_join(mydf, by = "ZIPCODE")
+
+```
+
+# Datasets
+
+This project required three datasets - one of which is an .`shp` file containing Florida Zip Code geometries from __[Koordinates](https://koordinates.com/)__ two of which are pulled from __[my very unorganized GitHub Repo](https://github.com/jordanrosedouglass/hypertension_research)__. After using several iterations of the `join()` function (none of which appeared to be of my liking), the `merge()` function was used to _back-door_ join the datasets.
+
+Through a great deal of frustration and stress, eventually, I was able to use the `join` function for the geometry data to join the Zip Codes of participants. :sweat_smile:
+
+## Visualizing Spatial Features
+
+When first creating the map, I very quickly realized just how  small zip codes were - they are __really small in Florida__. This lead to some issues in terms of visualization - the map of Florida was great - the filling of participants by their zip codes? _Not so much.._ This was eventually resolved by deciding to use an interactive map - we can zoom in to see the variation of participants in the Central Florida area.
+
+```{r mapplot}
+library(ggrepel)
+#create map filling by frequency of ZIPCODE appearing
+pmap <- participant_map %>% 
+  ggplot()+
+  geom_sf(aes(fill = n), color = "white") +
+  theme_light() +
+    guides(fill= guide_legend(reverse=TRUE)) +
+  theme(aspect.ratio = 0.8, panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  labs(title="BioDatix Participants", caption = "Source: BioDatix Participant Data") +
+  labs(fill="Participants") +
+  scale_fill_continuous()
+
+library(plotly)
+library(htmlwidgets)
+
+p <- ggplot(participant_map) + geom_sf(aes(fill=n))
+
+ggplotly(p) %>%
+  highlight(
+    "plotly_hover",
+    selected = attrs_selected(line = list(color = "white"))
+  )
+```
+
+## Plotting Variables
+
+Following the map plots - we wanted to visualize the __systolic__ and __diastolic__ blood pressure and __heart rate__ from the participants; this will help to validate the variables collecting the data the way they are supposed to.
+
+
+For the purpose of organization, a new dataframe `long` was created to convert the wide data to long format - this way every row represents an observation from a category; we have also removed missing values from `BP_Sys`, `BP_Dia`, and `HeartRate`. We have also created variables indicating what is considered _high_ blood pressures and heart rates.
+
+From the plot, there is a linear relationship: as heart rate increases, so does blood pressure - this is to be expected as heart rate and blood pressure are intimately related.
+
+
+
+```{r plot_bp}
+
+master_collection <- mergesurvey %>% 
+  filter(!is.na(BP_Sys), !is.na(BP_Dia), !is.na(HeartRate)) %>% 
+  mutate(
+    blood_pressure = ifelse(BP_Sys > 130 | BP_Dia > 90, "High", "Normal"),
+  h_rate = ifelse(HeartRate >= 145, "High", "Normal"),
+  Gender = as.factor(Gender))
+
+long = master_collection %>%
+  select(BP_Dia, BP_Sys, HeartRate,Gender ) %>% 
+  gather(bp, value, BP_Dia:BP_Sys) %>% 
+  mutate(bp = recode(bp, `BP_Dia` = "Diastolic", `BP_Sys` = "Systolic"))
+
+
+
+bpplot <- ggplot(long, aes(value, HeartRate, color = bp)) +
+  geom_point(alpha = 0.7, size = 2) +
+  geom_smooth(method= "lm",
+              formula = "y ~ x",
+              colour="#479FD0") +
+facet_grid(~bp) + 
+  scale_color_discrete() +
+  theme_minimal() +
+  theme(aspect.ratio = 0.8, panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+    theme(text = element_text(family = "serif", size = 11), legend.position="none") +
+  xlab("Blood pressure (mm Hg)") +
+  ylab("Heart Rate") +
+  ggtitle("Blood pressure vs. Heart Rate") +
+  labs(
+    caption = "Source: Biodatix Wearable Data")
+
+bpplot
+
+```
+
+
+## Gender and Blood Pressure
+
+The following visualization was further faceted by `gender`. Here, we can clearly see that there is not much difference between gender and blood pressure - however noticed is there are more instances of outliers in female than male participants.
+
+```{r linear model formula}
+ggplot(long, aes(value, HeartRate, color = Gender)) +
+  geom_point(alpha = 0.7, size = 2) +
+  geom_smooth(method= "lm",
+              formula = "y ~ x",
+              colour="#479FD0") +
+  facet_grid(bp ~ Gender) +
+  scale_color_discrete() +
+  theme_hc() +
+    theme(text = element_text(family = "serif", size = 11), legend.position="none") +
+  xlab("Blood pressure (mm Hg)") +
+  ylab("Heart Rate (BPM)") +
+  ggtitle("Blood pressure vs. Heart Rate vs. Gender") +
+  labs(caption = "Source: Biodatix Wearable Data")
+
+```
+
+
+
+
+
+
+
+
