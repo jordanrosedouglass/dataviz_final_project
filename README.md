@@ -1,7 +1,7 @@
 # Data Visualization and Reproducible Research
 > `@jordanrosedouglass`
 
-For more information regarding myself and my interests, look no further than [here](https://github.com/jordanrosedouglass)
+For more information regarding myself and my interests, look no further than [here](https://github.com/jordanrosedouglass).
 
 
 The following is a sample of products created during the _"Data Visualization and Reproducible Research"_ course in Fall 2020.
@@ -22,7 +22,7 @@ My favorite visualization from this Mini-Project can be found below; while it's 
 
 ## Project 02
 
-For the second project, I used data collected via wearable devices from a fellow FPU student's graduate project. The devices collected systolic and diastolic blood pressure readings, heart rate and step count in fifteen minute intervals. Participants personal information was de-identified to ensure privacy. All content for this Mini Project can be found the `project_02/` [folder](https://github.com/jordanrosedouglass/dataviz_final_project/tree/main/project-02)
+For the second project, I used data collected via wearable devices from a fellow FPU student's graduate project. The devices collected systolic and diastolic blood pressure readings, heart rate and step count in fifteen minute intervals. Participants personal information was de-identified to ensure privacy. All content for this Mini Project can be found the `project_02/` [folder](https://github.com/jordanrosedouglass/dataviz_final_project/tree/main/project-02).
 
 
 **Favorite Viz Project 2:** 
@@ -34,7 +34,7 @@ The visualization provided below is my favorite from Mini Project 2 - I enjoyed 
 
 ## Project 03
 
-The third project explored Tampa weather over time. This project was interesting because it provided an opportunity to mime existing visualizations while learning how to better operate and maneuver aesthetics, geometries, scales and facets with `ggplot`. Find all associated files for `project_03/` [here](https://github.com/jordanrosedouglass/dataviz_final_project/tree/main/project-03)
+The third project explored Tampa weather over time. This project was interesting because it provided an opportunity to mime existing visualizations while learning how to better operate and maneuver aesthetics, geometries, scales and facets with `ggplot`. Find all associated files for `project_03/` [here](https://github.com/jordanrosedouglass/dataviz_final_project/tree/main/project-03).
 
 **Plot F Recreation:** 
 
