@@ -1,7 +1,7 @@
 # Data Visualization and Reproducible Research
 > `@jordanrosedouglass`
 
-For more information regarding myself and my interests, look no further than [here](https://github.com/jordanrosedouglass)
+For more information regarding myself and my interests, look no further than [here](https://github.com/jordanrosedouglass).
 
 
 The following is a sample of products created during the _"Data Visualization and Reproducible Research"_ course in Fall 2020.
@@ -12,7 +12,7 @@ In the `project_01/` [folder](https://github.com/jordanrosedouglass/dataviz_fina
 
 **Favorite Viz Project 1:** 
 
-__My favorite visualization from this Mini-Project can be found below; while it's very simple - originally the output was not smooth and gaps between data points were clearly shown. This new plot offered a smooth solid line.__
+My favorite visualization from this Mini-Project can be found below; while it's very simple - originally the output was not smooth and gaps between data points were clearly shown. This new plot offered a smooth solid line. :relieved:
 
 
 <img src="https://github.com/jordanrosedouglass/dataviz_final_project/blob/main/figures/BOTclean.png?raw=true" width="70%" height="70%">
@@ -22,19 +22,19 @@ __My favorite visualization from this Mini-Project can be found below; while it'
 
 ## Project 02
 
-For the second project, I used data collected via wearable devices from a fellow FPU student's graduate project. The devices collected systolic and diastolic blood pressure readings, heart rate and step count in fifteen minute intervals. Participants personal information was de-identified to ensure privacy. All content for this Mini Project can be found the `project_02/` [folder](https://github.com/jordanrosedouglass/dataviz_final_project/tree/main/project-02)
+For the second project, I used data collected via wearable devices from a fellow FPU student's graduate project. The devices collected systolic and diastolic blood pressure readings, heart rate and step count in fifteen minute intervals. Participants personal information was de-identified to ensure privacy. All content for this Mini Project can be found the `project_02/` [folder](https://github.com/jordanrosedouglass/dataviz_final_project/tree/main/project-02).
 
 
 **Favorite Viz Project 2:** 
 
-__The visualization provided below is my favorite from Mini Project 2 - I enjoyed faceting the `systolic`, `diastolic` and `gender` variables and confirming that blood pressure linearly related to `HeartRate`.
+The visualization provided below is my favorite from Mini Project 2 - I enjoyed faceting the `systolic`, `diastolic` and `gender` variables and confirming that blood pressure linearly related to `HeartRate`.
 <img src="https://github.com/jordanrosedouglass/dataviz_final_project/blob/main/figures/bpgen.png?raw=true" width="60%" height="60%">
 
 
 
 ## Project 03
 
-The third project explored Tampa weather over time. This project was interesting because it provided an opportunity to mime existing visualizations while learning how to better operate and maneuver aesthetics, geometries, scales and facets with `ggplot`.
+The third project explored Tampa weather over time. This project was interesting because it provided an opportunity to mime existing visualizations while learning how to better operate and maneuver aesthetics, geometries, scales and facets with `ggplot`. Find all associated files for `project_03/` [here](https://github.com/jordanrosedouglass/dataviz_final_project/tree/main/project-03).
 
 **Plot F Recreation:** 
 
