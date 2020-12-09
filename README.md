@@ -34,7 +34,7 @@ The visualization provided below is my favorite from Mini Project 2 - I enjoyed 
 
 ## Project 03
 
-The third project explored Tampa weather over time. This project was interesting because it provided an opportunity to mime existing visualizations while learning how to better operate and maneuver aesthetics, geometries, scales and facets with `ggplot`.
+The third project explored Tampa weather over time. This project was interesting because it provided an opportunity to mime existing visualizations while learning how to better operate and maneuver aesthetics, geometries, scales and facets with `ggplot`. Find all associated files for `project_03/` [here](https://github.com/jordanrosedouglass/dataviz_final_project/tree/main/project-03)
 
 **Plot F Recreation:** 
 
