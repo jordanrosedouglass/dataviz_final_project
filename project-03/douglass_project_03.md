@@ -29,10 +29,10 @@ sample_n(weather_tpa, 4)
 ## # A tibble: 4 x 6
 ##    year month   day precipitation max_temp min_temp
 ##   <dbl> <dbl> <dbl>         <dbl>    <dbl>    <dbl>
-## 1  2016     5     7             0       80       60
-## 2  2016     5    19             0       89       76
-## 3  2016     1     2             0       73       59
-## 4  2016     4     3             0       78       59
+## 1  2016     2    22          0.13       78       58
+## 2  2016    11    18          0          81       60
+## 3  2016     3    11          0          85       68
+## 4  2016     1    23          0.1        60       47
 ```
 
 
