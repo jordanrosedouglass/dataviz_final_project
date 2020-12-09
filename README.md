@@ -12,7 +12,7 @@ In the `project_01/` [folder](https://github.com/jordanrosedouglass/dataviz_fina
 
 **Favorite Viz Project 1:** 
 
-__My favorite visualization from this Mini-Project can be found below; while it's very simple - originally the output was not smooth and gaps between data points were clearly shown. This new plot offered a smooth solid line.__
+My favorite visualization from this Mini-Project can be found below; while it's very simple - originally the output was not smooth and gaps between data points were clearly shown. This new plot offered a smooth solid line. :relieved:
 
 
 <img src="https://github.com/jordanrosedouglass/dataviz_final_project/blob/main/figures/BOTclean.png?raw=true" width="70%" height="70%">
@@ -27,7 +27,7 @@ For the second project, I used data collected via wearable devices from a fellow
 
 **Favorite Viz Project 2:** 
 
-__The visualization provided below is my favorite from Mini Project 2 - I enjoyed faceting the `systolic`, `diastolic` and `gender` variables and confirming that blood pressure linearly related to `HeartRate`.
+The visualization provided below is my favorite from Mini Project 2 - I enjoyed faceting the `systolic`, `diastolic` and `gender` variables and confirming that blood pressure linearly related to `HeartRate`.
 <img src="https://github.com/jordanrosedouglass/dataviz_final_project/blob/main/figures/bpgen.png?raw=true" width="60%" height="60%">
 
 
