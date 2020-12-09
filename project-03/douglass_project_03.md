@@ -29,10 +29,10 @@ sample_n(weather_tpa, 4)
 ## # A tibble: 4 x 6
 ##    year month   day precipitation max_temp min_temp
 ##   <dbl> <dbl> <dbl>         <dbl>    <dbl>    <dbl>
-## 1  2016    12     3          0          80       58
-## 2  2016     2     5          0          64       45
-## 3  2016    11     5          0          84       66
-## 4  2016     1    16          0.03       75       60
+## 1  2016     4     1          0          85       72
+## 2  2016     5     2          0          89       74
+## 3  2016     8    11          0.09       91       77
+## 4  2016    11     6          0          84       64
 ```
 
 
@@ -219,7 +219,7 @@ f <-ggplot(tpa_clean,
   aes(x = `max_temp`,
       y = month,
       fill = stat(x))) +
-  geom_density_ridges_gradient(scale = 1.75, size = 0.6, quantile_lines = TRUE, quantiles = 0.5) +
+  geom_density_ridges_gradient(scale = 1.5, size = 0.6, quantile_lines = TRUE, quantiles = 0.5) +
   scale_fill_viridis_c(option = "C") +
   labs(x = "Maximum temperature (in Fahrenheit degrees)",
        y = "",

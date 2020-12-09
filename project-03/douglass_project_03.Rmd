@@ -172,7 +172,7 @@ f <-ggplot(tpa_clean,
   aes(x = `max_temp`,
       y = month,
       fill = stat(x))) +
-  geom_density_ridges_gradient(scale = 1.75, size = 0.6, quantile_lines = TRUE, quantiles = 0.5) +
+  geom_density_ridges_gradient(scale = 1.5, size = 0.6, quantile_lines = TRUE, quantiles = 0.5) +
   scale_fill_viridis_c(option = "C") +
   labs(x = "Maximum temperature (in Fahrenheit degrees)",
        y = "",
